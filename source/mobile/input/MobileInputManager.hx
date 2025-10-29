@@ -9,10 +9,41 @@ import haxe.ds.Map;
  */
 class MobileInputManager extends FlxTypedSpriteGroup<MobileButton>
 {
+	public var inState(default, set):Bool;
+	function set_inState(value:Bool)
+	{
+		for (button in trackedButtons)
+		{
+			button.inState = value;
+		}
+		for (buttonStr in trackedStringButtons)
+		{
+			buttonStr.inState = value;
+		}
+
+		return value;
+	}
+
+	public var inSubstate(default, set):Bool;
+	function set_inSubstate(value:Bool)
+	{
+		for (button in trackedButtons)
+		{
+			button.inSubstate = value;
+		}
+		for (buttonStr in trackedStringButtons)
+		{
+			buttonStr.inSubstate = value;
+		}
+
+		return value;
+	}
+
 	/**
 	 * A map to keep track of all the buttons using it's ID
 	 */
 	public var trackedButtons:Map<MobileInputID, MobileButton> = new Map<MobileInputID, MobileButton>();
+	public var trackedStringButtons:Map<String, MobileButton> = new Map<String, MobileButton>();
 
 	public function new()
 	{
@@ -167,6 +198,7 @@ class MobileInputManager extends FlxTypedSpriteGroup<MobileButton>
 	public function updateTrackedButtons()
 	{
 		trackedButtons.clear();
+		trackedStringButtons.clear();
 		forEachExists(function(button:MobileButton)
 		{
 			if (button.IDs != null)
@@ -177,6 +209,15 @@ class MobileInputManager extends FlxTypedSpriteGroup<MobileButton>
 					{
 						trackedButtons.set(id, button);
 					}
+				}
+			}
+			if (button.strName != null)
+			{
+				trace(button.strName);
+				if (!trackedStringButtons.exists(button.strName))
+				{
+					trackedStringButtons.set(button.strName, button);
+					trace(button.strName + " Added");
 				}
 			}
 		});

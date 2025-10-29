@@ -1,5 +1,6 @@
 {
 	"song": {
+		"cameraMode": "psych_new",
 		"player1": "pico-playable",
 		"gfVersion": "nene",
 		"notes": [

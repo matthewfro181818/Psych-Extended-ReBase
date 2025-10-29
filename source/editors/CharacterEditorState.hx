@@ -22,7 +22,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 {
 	var useDesktopThings:Bool = #if TOUCH_CONTROLS (ClientPrefs.data.KeyboardFixes ? true : false) #else true #end;
 	var character:Character;
-	var ghost:FlxSprite;
+	var ghost:Character;
 	var animateGhost:FlxAnimate;
 	var animateGhostImage:String;
 	var cameraFollowPointer:FlxSprite;
@@ -45,8 +45,10 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 	var _goToPlayState:Bool = true;
 
 	var anims = null;
+	var ghostAnims = null;
 	var animsTxt:FlxText;
 	var curAnim = 0;
+	var curGhostAnim = 0;
 
 	private var camEditor:FlxCamera;
 	private var camHUD:FlxCamera;
@@ -100,11 +102,6 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		silhouettes.add(boyfriend);
 
 		silhouettes.alpha = 0.25;
-
-		ghost = new FlxSprite();
-		ghost.visible = false;
-		ghost.alpha = ghostAlpha;
-		add(ghost);
 		
 		animsTxt = new FlxText(10, 32, 400, '');
 		animsTxt.setFormat(null, 16, FlxColor.WHITE, LEFT, OUTLINE_FAST, FlxColor.BLACK);
@@ -193,6 +190,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 			"CHARACTER",
 			"A - Reset Current Offset",
 			"V/D - Previous/Next Animation",
+			"Q/E - Ghost's Previous/Next Animation",
 			"Arrow Buttons - Move Offset",
 			"",
 			"OTHER",
@@ -252,6 +250,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 	function addCharacter(reload:Bool = false)
 	{
 		var pos:Int = -1;
+
 		if(character != null)
 		{
 			pos = members.indexOf(character);
@@ -305,62 +304,47 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 
 		//var hideGhostButton:PsychUIButton = null;
 		var makeGhostButton:PsychUIButton = new PsychUIButton(25, 15, "Make Ghost", function() {
-			var anim = anims[curAnim];
+			ghostAnims = anims.copy();
+			var anim = ghostAnims[curAnim];
 			if(!character.isAnimationNull())
 			{
-				var myAnim = anims[curAnim];
-				if(!character.isAnimateAtlas)
+				var pos = members.indexOf(character);
+				//Better Ghost
+				if(ghost != null)
 				{
-					ghost.loadGraphic(character.graphic);
-					ghost.frames.frames = character.frames.frames;
-					ghost.animation.copyFrom(character.animation);
-					ghost.animation.play(character.animation.curAnim.name, true, false, character.animation.curAnim.curFrame);
-					ghost.animation.pause();
+					remove(ghost);
+					ghost.destroy();
 				}
-				else if(myAnim != null) //This is VERY unoptimized and bad, I hope to find a better replacement that loads only a specific frame as bitmap in the future.
+
+				var isPlayerGhost = character.isPlayer;
+				ghost = new Character(0, 0, _char, isPlayerGhost);
+				if(ghost.editorIsPlayer != null && isPlayerGhost != ghost.editorIsPlayer)
 				{
-					if(animateGhost == null) //If I created the animateGhost on create() and you didn't load an atlas, it would crash the game on destroy, so we create it here
-					{
-						animateGhost = new FlxAnimate(ghost.x, ghost.y);
-						animateGhost.showPivot = false;
-						insert(members.indexOf(ghost), animateGhost);
-						animateGhost.active = false;
-					}
-
-					if(animateGhost == null || animateGhostImage != character.imageFile)
-						Paths.loadAnimateAtlas(animateGhost, character.imageFile);
-					
-					if(myAnim.indices != null && myAnim.indices.length > 0)
-						animateGhost.anim.addBySymbolIndices('anim', myAnim.name, myAnim.indices, 0, false);
-					else
-						animateGhost.anim.addBySymbol('anim', myAnim.name, 0, false);
-
-					animateGhost.anim.play('anim', true, false, character.atlas.anim.curFrame);
-					animateGhost.anim.pause();
-
-					animateGhostImage = character.imageFile;
+					ghost.isPlayer = !ghost.isPlayer;
+					ghost.flipX = (ghost.originalFlipX != ghost.isPlayer);
 				}
-				
-				var spr:FlxSprite = !character.isAnimateAtlas ? ghost : animateGhost;
-				if(spr != null)
-				{
-					spr.setPosition(character.x, character.y);
-					spr.antialiasing = character.antialiasing;
-					spr.flipX = character.flipX;
-					spr.alpha = ghostAlpha;
+				ghost.debugMode = true;
+				ghost.missingCharacter = false;
 
-					spr.scale.set(character.scale.x, character.scale.y);
-					spr.updateHitbox();
+				add(ghost);
+				remove(character);
+				add(character);
 
-					spr.offset.set(character.offset.x, character.offset.y);
-					spr.visible = true;
+				// Copy character properties to ghost
+				ghost.flipX = character.flipX;
+				ghost.scale.set(character.scale.x, character.scale.y);
 
-					var otherSpr:FlxSprite = (spr == animateGhost) ? ghost : animateGhost;
-					if(otherSpr != null) otherSpr.visible = false;
-				}
-				/*hideGhostButton.active = true;
-				hideGhostButton.alpha = 1;*/
-				trace('created ghost image');
+				// Play the same animation
+				ghost.playAnim(character.getAnimationName(), true, false, character.animation.curAnim.curFrame);
+				ghost.animation.pause();
+				ghost.x = character.x;
+				ghost.y = character.y;
+				ghost.offset.x = anim.offsets[0];
+				ghost.offset.y = anim.offsets[1];
+
+				ghost.alpha = ghostAlpha;
+				ghost.visible = true;
+				//trace('created ghost character');
 			}
 		});
 
@@ -379,12 +363,6 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 			ghost.colorTransform.redOffset = value;
 			ghost.colorTransform.greenOffset = value;
 			ghost.colorTransform.blueOffset = value;
-			if(animateGhost != null)
-			{
-				animateGhost.colorTransform.redOffset = value;
-				animateGhost.colorTransform.greenOffset = value;
-				animateGhost.colorTransform.blueOffset = value;
-			}
 		};
 
 		var ghostAlphaSlider:PsychUISlider = new PsychUISlider(15, makeGhostButton.y + 25, function(v:Float)
@@ -930,8 +908,22 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 
 		if(lastZoom != FlxG.camera.zoom) cameraZoomText.text = 'Zoom: ' + FlxMath.roundDecimal(FlxG.camera.zoom, 2) + 'x';
 
-		// CHARACTER CONTROLS
+		/* CHARACTER/GHOST CONTROLS */
 		var changedAnim:Bool = false;
+		var changedGhostAnim:Bool = false;
+		if(ghostAnims != null && ghostAnims.length > 1)
+		{
+			if((/* FlxG.keys.justPressed.W */ #if TOUCH_CONTROLS mobilePad.buttonQ.justPressed #end) && (changedGhostAnim = true)) curGhostAnim--;
+			else if((/* FlxG.keys.justPressed.S */ #if TOUCH_CONTROLS mobilePad.buttonE.justPressed #end) && (changedGhostAnim = true)) curGhostAnim++;
+
+			if(changedGhostAnim)
+			{
+				curGhostAnim = FlxMath.wrap(curGhostAnim, 0, ghostAnims.length-1);
+				ghost.playAnim(ghostAnims[curGhostAnim].anim, true);
+				ghost.offset.x = ghostAnims[curGhostAnim].offsets[0];
+				ghost.offset.y = ghostAnims[curGhostAnim].offsets[1];
+			}
+		}
 		if(anims.length > 1)
 		{
 			if((FlxG.keys.justPressed.W #if TOUCH_CONTROLS || mobilePad.buttonV.justPressed #end) && (changedAnim = true)) curAnim--;
@@ -1163,9 +1155,6 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		/////////////
 		// bg data //
 		/////////////
-		#if !BASE_GAME_FILES
-		camEditor.bgColor = 0xFF666666;
-		#else
 		var bg:BGSprite = new BGSprite('stageback', -600, -200, 0.9, 0.9);
 		add(bg);
 
@@ -1173,7 +1162,6 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		stageFront.setGraphicSize(Std.int(stageFront.width * 1.1));
 		stageFront.updateHitbox();
 		add(stageFront);
-		#end
 
 		dadPosition.set(100, 100);
 		bfPosition.set(770, 100);
@@ -1406,7 +1394,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 	function onMouseEvent(e:MouseEvent):Void
 	{
 		#if TOUCH_CONTROLS
-		if (mobilePad != null && !mobilePad.anyPressed([ANY]))
+		if (mobilePad != null)
 			switch (e.type)
 			{
 				case MouseEvent.MOUSE_DOWN:

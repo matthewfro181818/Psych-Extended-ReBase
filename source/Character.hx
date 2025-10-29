@@ -1132,7 +1132,7 @@ class Character extends FunkinMergedSprite implements IBeatReceiver implements I
 
 		var xml:Access = null;
 		while (true) {
-			var xmlPath:String = Paths.xmlMod('characters/$character');
+			var xmlPath:String = Paths.xml('characters/$character');
 			if (!FileSystem.exists(xmlPath)) {
 				character = FALLBACK_CHARACTER;
 				if (char != null)

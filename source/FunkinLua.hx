@@ -1653,14 +1653,14 @@ class FunkinLua {
 			}
 			PlayState.instance.addCharacterToList(name, charType);
 		});
-		Lua_helper.add_callback(lua, "precacheImage", function(name:String) {
-			Paths.returnGraphic(name);
+		Lua_helper.add_callback(lua, "precacheImage", function(name:String, ?allowGPU:Bool = true) {
+			Paths.image(name, allowGPU);
 		});
 		Lua_helper.add_callback(lua, "precacheSound", function(name:String) {
-			CoolUtil.precacheSound(name);
+			Paths.sound(name);
 		});
 		Lua_helper.add_callback(lua, "precacheMusic", function(name:String) {
-			CoolUtil.precacheMusic(name);
+			Paths.music(name);
 		});
 		Lua_helper.add_callback(lua, "triggerEvent", function(name:String, ?value1:String = '', ?value2:String = '') {
 			PlayState.instance.triggerEvent(name, value1, value2, Conductor.songPosition);
@@ -4116,6 +4116,7 @@ class CallbackHandler
 #if (HSCRIPT_ALLOWED && SScript)
 class HScript extends SScript
 {
+	public var modFolder:String;
 	public var parentLua:FunkinLua;
 
 	public function setParent(parent:Dynamic) {
@@ -4175,9 +4176,19 @@ class HScript extends SScript
 
 		parentLua = parent;
 		if (parent != null)
+		{
 			origin = parent.scriptName;
+			this.modFolder = parent.modFolder;
+		}
 		if (scriptFile != null && scriptFile.length > 0)
-			origin = scriptFile;
+		{
+			this.origin = scriptFile;
+			#if MODS_ALLOWED
+			var myFolder:Array<String> = scriptFile.split('/');
+			if(myFolder[0] + '/' == Paths.mods() && (Mods.currentModDirectory == myFolder[1] || Mods.getGlobalMods().contains(myFolder[1]))) //is inside mods folder
+				this.modFolder = myFolder[1];
+			#end
+		}
 		preset();
 		execute();
 		/*
@@ -4259,6 +4270,158 @@ class HScript extends SScript
 		set('debugPrint', function(text:String, ?color:FlxColor = null) {
 			if(color == null) color = FlxColor.WHITE;
 			PlayState.instance.addTextToDebug(text, color);
+		});
+		set('getModSetting', function(saveTag:String, ?modName:String = null) {
+			if(modName == null)
+			{
+				if(this.modFolder == null)
+				{
+					PlayState.instance.addTextToDebug('getModSetting: Argument #2 is null and script is not inside a packed Mod folder!', FlxColor.RED);
+					return null;
+				}
+				modName = this.modFolder;
+			}
+			return FunkinLua.getModSetting(saveTag, modName);
+		});
+
+		/* Keyboard/Gamepad Functions */
+		set('keyboardJustPressed', function(name:String)
+		{
+			#if TOUCH_CONTROLS
+			var check:Dynamic;
+			check = FunkinLua.specialKeyCheckForOthers(name, "justPressed");
+			if (check != null) return check;
+			#end
+			return Reflect.getProperty(FlxG.keys.justPressed, name);
+		});
+		set('keyboardPressed', function(name:String)
+		{
+			#if TOUCH_CONTROLS
+			var check:Dynamic;
+			check = FunkinLua.specialKeyCheckForOthers(name, "pressed");
+			if (check != null) return check;
+			#end
+			return Reflect.getProperty(FlxG.keys.pressed, name);
+		});
+		set('keyboardReleased', function(name:String)
+		{
+			#if TOUCH_CONTROLS
+			var check:Dynamic;
+			check = FunkinLua.specialKeyCheckForOthers(name, "released");
+			if (check != null) return check;
+			#end
+			return Reflect.getProperty(FlxG.keys.justReleased, name);
+		});
+
+		set('anyGamepadJustPressed', function(name:String) return FlxG.gamepads.anyJustPressed(name));
+		set('anyGamepadPressed', function(name:String) FlxG.gamepads.anyPressed(name));
+		set('anyGamepadReleased', function(name:String) return FlxG.gamepads.anyJustReleased(name));
+
+		set('gamepadAnalogX', function(id:Int, ?leftStick:Bool = true)
+		{
+			var controller = FlxG.gamepads.getByID(id);
+			if (controller == null) return 0.0;
+
+			return controller.getXAxis(leftStick ? LEFT_ANALOG_STICK : RIGHT_ANALOG_STICK);
+		});
+		set('gamepadAnalogY', function(id:Int, ?leftStick:Bool = true)
+		{
+			var controller = FlxG.gamepads.getByID(id);
+			if (controller == null) return 0.0;
+
+			return controller.getYAxis(leftStick ? LEFT_ANALOG_STICK : RIGHT_ANALOG_STICK);
+		});
+		set('gamepadJustPressed', function(id:Int, name:String)
+		{
+			var controller = FlxG.gamepads.getByID(id);
+			if (controller == null) return false;
+
+			return Reflect.getProperty(controller.justPressed, name) == true;
+		});
+		set('gamepadPressed', function(id:Int, name:String)
+		{
+			var controller = FlxG.gamepads.getByID(id);
+			if (controller == null) return false;
+
+			return Reflect.getProperty(controller.pressed, name) == true;
+		});
+		set('gamepadReleased', function(id:Int, name:String)
+		{
+			var controller = FlxG.gamepads.getByID(id);
+			if (controller == null) return false;
+
+			return Reflect.getProperty(controller.justReleased, name) == true;
+		});
+
+		set('keyJustPressed', function(name:String = '') {
+			#if TOUCH_CONTROLS
+			var check:Dynamic;
+			check = FunkinLua.specialKeyCheckForOthers(name, "justPressed");
+			if (check != null) return check;
+			#end
+			var key:Bool = false;
+			switch(name) {
+				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_P');
+				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_P');
+				case 'up': key = PlayState.instance.getControl('NOTE_UP_P');
+				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_P');
+				case 'accept': key = PlayState.instance.getControl('ACCEPT');
+				case 'back': key = PlayState.instance.getControl('BACK');
+				case 'pause': key = PlayState.instance.getControl('PAUSE');
+				case 'reset': key = PlayState.instance.getControl('RESET');
+				#if desktop
+				case 'space': key = FlxG.keys.justPressed.SPACE;//an extra key for convinience
+				#end
+				case 'ui_left': key = PlayState.instance.getControl('UI_LEFT_P');
+				case 'ui_down': key = PlayState.instance.getControl('UI_DOWN_P');
+				case 'ui_up': key = PlayState.instance.getControl('UI_UP_P');
+				case 'ui_right': key = PlayState.instance.getControl('UI_RIGHT_P');
+			}
+			return key;
+		});
+		set('keyPressed', function(name:String = '') {
+			#if TOUCH_CONTROLS
+			var check:Dynamic;
+			check = FunkinLua.specialKeyCheckForOthers(name, "pressed");
+			if (check != null) return check;
+			#end
+			var key:Bool = false;
+			switch(name) {
+				case 'left': key = PlayState.instance.getControl('NOTE_LEFT');
+				case 'down': key = PlayState.instance.getControl('NOTE_DOWN');
+				case 'up': key = PlayState.instance.getControl('NOTE_UP');
+				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT');
+				#if desktop
+				case 'space': key = FlxG.keys.pressed.SPACE;//an extra key for convinience
+				#end
+				case 'ui_left': key = PlayState.instance.getControl('UI_LEFT');
+				case 'ui_down': key = PlayState.instance.getControl('UI_DOWN');
+				case 'ui_up': key = PlayState.instance.getControl('UI_UP');
+				case 'ui_right': key = PlayState.instance.getControl('UI_RIGHT');
+			}
+			return key;
+		});
+		set('keyReleased', function(name:String = '') {
+			#if TOUCH_CONTROLS
+			var check:Dynamic;
+			check = FunkinLua.specialKeyCheckForOthers(name, "released");
+			if (check != null) return check;
+			#end
+			var key:Bool = false;
+			switch(name) {
+				case 'left': key = PlayState.instance.getControl('NOTE_LEFT_R');
+				case 'down': key = PlayState.instance.getControl('NOTE_DOWN_R');
+				case 'up': key = PlayState.instance.getControl('NOTE_UP_R');
+				case 'right': key = PlayState.instance.getControl('NOTE_RIGHT_R');
+				#if desktop
+				case 'space': key = FlxG.keys.justReleased.SPACE;//an extra key for convinience
+				#end
+				case 'ui_left': key = PlayState.instance.getControl('UI_LEFT_R');
+				case 'ui_down': key = PlayState.instance.getControl('UI_DOWN_R');
+				case 'ui_up': key = PlayState.instance.getControl('UI_UP_R');
+				case 'ui_right': key = PlayState.instance.getControl('UI_RIGHT_R');
+			}
+			return key;
 		});
 
 		// For adding your own callbacks

@@ -59,7 +59,7 @@ enum abstract WaveformTarget(String)
 class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.PsychUIEvent
 {
 	public static var isFreePlay:Bool = false;
-	var useDesktopThings:Bool = #if TOUCH_CONTROLS (ClientPrefs.data.KeyboardFixes ? true : false) #else true #end;
+	var usingMobile:Bool = #if TOUCH_CONTROLS (ClientPrefs.data.KeyboardFixes ? false : true) #else false #end;
 	public static final defaultEvents:Array<Array<String>> =
 	[
 		['', "Nothing. Yep, that's right."], //Always leave this one empty pls
@@ -126,7 +126,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 
 	var sectionFirstNoteID:Int = 0;
 	var sectionFirstEventID:Int = 0;
-	public static var curSec:Int = 0;
+	var curSec:Int = 0;
 
 	var chartEditorSave:FlxSave;
 	var mainBox:PsychUIBox;
@@ -467,7 +467,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		stageDropDown.list = loadFileList('stages/', 'data/stageList.txt');
 		onChartLoaded();
 
-		var tipText:FlxText = new FlxText(FlxG.width - 210, FlxG.height - 30, 200, 'Press ${(!useDesktopThings) ? 'F' : 'F1'} for Help', 20);
+		var tipText:FlxText = new FlxText(FlxG.width - 210, FlxG.height - 30, 200, 'Press ${(usingMobile) ? 'F' : 'F1'} for Help', 20);
 		tipText.cameras = [camUI];
 		tipText.setFormat(null, 16, FlxColor.WHITE, RIGHT);
 		tipText.borderColor = FlxColor.BLACK;
@@ -490,7 +490,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		fullTipText.cameras = [camUI];
 		fullTipText.scrollFactor.set();
 		fullTipText.visible = fullTipText.active = false;
-		fullTipText.text = (!useDesktopThings) ? [
+		fullTipText.text = (usingMobile) ? [
 			"Up/Down - Move Conductor's Time",
 			"Left/Right - Change Sections",
 			"Up/Down (On The Right) - Decrease/Increase Note Sustain Length",
@@ -541,8 +541,6 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		add(fullTipText);
 		#if TOUCH_CONTROLS
 		addMobilePad('CHART_EDITOR', 'CHART_EDITOR_NEW');
-		addMobilePadCamera();
-		if (useDesktopThings) mobilePad.y = 1920;
 		#end
 		super.create();
 	}
@@ -618,8 +616,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 			player2: 'dad',
 			gfVersion: 'gf',
 			stage: 'stage',
-			format: 'psych_v1',
-			validScore: true
+			format: 'psych_v1'
 		};
 		Song.chartPath = null;
 		loadChart(song);
@@ -793,7 +790,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 				else if(#if TOUCH_CONTROLS mobilePad.buttonF.justPressed || #end FlxG.keys.justPressed.F1)
 				{
 					#if TOUCH_CONTROLS
-					if (!useDesktopThings)
+					if (usingMobile)
 					{
 						mobilePad.forEachAlive(function(button:MobileButton){
 							if(button.tag != 'F')
@@ -808,7 +805,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 				#if TOUCH_CONTROLS
 				if (mobilePad.buttonZ.justPressed)
 				{
-					if (!useDesktopThings)
+					if (usingMobile)
 					{
 						mobilePad.forEachAlive(function(button:MobileButton){
 							if(button.tag != 'Z' && button.tag != 'LEFT' && button.tag != 'RIGHT' && button.tag != 'UP' && button.tag != 'DOWN')
@@ -924,7 +921,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 
 					softReloadNotes(true);
 				}
-				else if(#if TOUCH_CONTROLS mobilePad.buttonLeft.justPressed || FlxG.keys.justPressed.A != mobilePad.buttonRight.justPressed || #end FlxG.keys.justPressed.D && !holdingAlt)
+				else if((#if TOUCH_CONTROLS mobilePad.buttonLeft.justPressed != mobilePad.buttonRight.justPressed || #end FlxG.keys.justPressed.A != FlxG.keys.justPressed.D) && !holdingAlt)
 				{
 					if(FlxG.sound.music.playing)
 						setSongPlaying(false);
@@ -971,7 +968,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 					else loadSection(0);
 					Conductor.songPosition = FlxG.sound.music.time = vocals.time = opponentVocals.time = timeToGoBack;
 				}
-				else if(#if TOUCH_CONTROLS mobilePad.buttonUp.pressed || FlxG.keys.pressed.W != mobilePad.buttonDown.pressed || #end FlxG.keys.pressed.S || FlxG.mouse.wheel != 0)
+				else if((#if TOUCH_CONTROLS mobilePad.buttonUp.pressed != mobilePad.buttonDown.pressed || #end FlxG.keys.pressed.W != FlxG.keys.pressed.S) || FlxG.mouse.wheel != 0)
 				{
 					if(FlxG.sound.music.playing)
 						setSongPlaying(false);
@@ -1162,7 +1159,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 						curQuant = quantizations[Std.int(Math.min(quantizations.indexOf(curQuant) + 1, quantizations.length - 1))];
 					forceDataUpdate = true;
 				}
-				else if(#if TOUCH_CONTROLS mobilePad.buttonV.justPressed || FlxG.keys.justPressed.Z != mobilePad.buttonD.justPressed || #end FlxG.keys.justPressed.X) //Decrease/Increase Zoom
+				else if(#if TOUCH_CONTROLS mobilePad.buttonV.justPressed != mobilePad.buttonD.justPressed || #end FlxG.keys.justPressed.Z != FlxG.keys.justPressed.X) //Decrease/Increase Zoom
 				{
 					if(#if TOUCH_CONTROLS mobilePad.buttonV.justPressed || #end FlxG.keys.justPressed.Z)
 						curZoom = zoomList[Std.int(Math.max(zoomList.indexOf(curZoom) - 1, 0))];
@@ -1254,7 +1251,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		var minX:Float = gridBg.x;
 		if(SHOW_EVENT_COLUMN && lockedEvents) minX += GRID_SIZE;
 
-		if (!useDesktopThings)
+		if (usingMobile #if TOUCH_CONTROLS && mobilePad.inState == true #end)
 		{
 			for (touch in FlxG.touches.list)
 			{
@@ -1284,9 +1281,8 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 					dummyArrow.x = gridBg.x + noteData * GRID_SIZE;
 					if(SHOW_EVENT_COLUMN)
 						noteData--;
-
-					#if TOUCH_CONTROLS
-					if(mobilePad.buttonY.pressed || touch.y >= gridBg.y || !prevGridBg.visible)
+		
+					if(#if TOUCH_CONTROLS mobilePad.buttonY.pressed || #end touch.y >= gridBg.y || !prevGridBg.visible)
 						dummyArrow.y = gridBg.y + diffY;
 					else
 					{
@@ -1294,8 +1290,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 						if(touch.y >= gridBg.y) t *= curZoom;
 						dummyArrow.y = gridBg.y + t;
 					}
-					#end
-
+		
 					if(isMovingNotes)
 					{
 						// Move note data
@@ -3598,7 +3593,6 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		var btnY = 1;
 		var btnWid = Std.int(tab.width);
 
-		#if !mobile
 		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  New', function()
 		{
 			var func:Void->Void = function()
@@ -3657,7 +3651,6 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		tab_group.add(btn);
 
 		btnY += 20;
-		#end
 		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Open Autosave...', function()
 		{
 			if(!fileDialog.completed) return;
@@ -3747,7 +3740,6 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		btn.text.alignment = LEFT;
 		tab_group.add(btn);
 
-		#if !mobile
 		if(SHOW_EVENT_COLUMN)
 		{
 			btnY += 20;
@@ -3838,7 +3830,6 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 			btn.text.alignment = LEFT;
 			tab_group.add(btn);
 		}
-		#end
 
 		btnY++;
 		btnY += 20;
@@ -3853,7 +3844,6 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		btn.text.alignment = LEFT;
 		tab_group.add(btn);
 
-		#if !mobile
 		btnY += 20;
 		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Save as...', function()
 		{
@@ -3865,7 +3855,6 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		},btnWid);
 		btn.text.alignment = LEFT;
 		tab_group.add(btn);
-		#end
 
 		if(SHOW_EVENT_COLUMN)
 		{
@@ -3924,7 +3913,6 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		}, btnWid);
 		btn.text.alignment = LEFT;
 		tab_group.add(btn);
-		#if !mobile
 		btnY++;
 		btnY += 20;
 		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Save (V-Slice)...', function()
@@ -4301,16 +4289,15 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		}, btnWid);
 		btn.text.alignment = LEFT;
 		tab_group.add(btn);
-		#end
 
 		btnY++;
 		btnY += 20;
-		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Preview (${(!useDesktopThings) ? 'C' : 'F12'})', openEditorPlayState, btnWid);
+		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Preview (${(usingMobile) ? 'C' : 'F12'})', openEditorPlayState, btnWid);
 		btn.text.alignment = LEFT;
 		tab_group.add(btn);
 		
 		btnY += 20;
-		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Playtest (${(!useDesktopThings) ? 'A' : 'ENTER'})', goToPlayState, btnWid);
+		var btn:PsychUIButton = new PsychUIButton(btnX, btnY, '  Playtest (${(usingMobile) ? 'A' : 'ENTER'})', goToPlayState, btnWid);
 		btn.text.alignment = LEFT;
 		tab_group.add(btn);
 
@@ -4923,11 +4910,11 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 	{
 		PlayState.SONG.disableNoteRGB = noRGBCheckBox.checked;
 
+		/*
 		for (note in notes)
 		{
 			if(note == null) continue;
 
-			/*
 			note.rgbShader.enabled = !noRGBCheckBox.checked;
 			if(note.rgbShader.enabled)
 			{
@@ -4941,11 +4928,11 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 						note.rgbShader.enabled = line.value;
 				}
 			}
-			*/
 		}
+		*/
 
 		for (note in strumLineNotes)
-			if (ClientPrefs.data.useRGB) note.rgbShader.enabled = !noRGBCheckBox.checked;
+			note.rgbShader.enabled = !noRGBCheckBox.checked;
 	}
 
 	function updateGridVisibility()
@@ -5101,9 +5088,7 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 		setSongPlaying(false);
 		chartEditorSave.flush(); //just in case a random crash happens before loading
 
-		persistentUpdate = false;
 		openSubState(new EditorPlayState(cast notes, [vocals, opponentVocals]));
-		#if TOUCH_CONTROLS removeMobilePad(); #end
 		upperBox.isMinimized = true;
 		upperBox.visible = mainBox.visible = infoBox.visible = false;
 	}
@@ -5123,19 +5108,15 @@ class ChartingStateNew extends MusicBeatState implements PsychUIEventHandler.Psy
 	
 	override function openSubState(SubState:FlxSubState)
 	{
-		if(!persistentUpdate) setSongPlaying(false);
+		#if TOUCH_CONTROLS mobilePad.inState = false; #end
 		super.openSubState(SubState);
+		if(!persistentUpdate) setSongPlaying(false);
 	}
 
 	override function closeSubState()
 	{
-		//ClientPrefs.toggleVolumeKeys(true);
-		persistentUpdate = true;
-		#if TOUCH_CONTROLS
-		addMobilePad("CHART_EDITOR", "CHART_EDITOR_NEW");
-		addMobilePadCamera();
-		if (useDesktopThings) mobilePad.y = 1920; //visible doesn't work, so I'll use this instead
-		#end
+		#if TOUCH_CONTROLS mobilePad.inState = true; #end
+		ClientPrefs.toggleVolumeKeys(true);
 		super.closeSubState();
 		upperBox.isMinimized = true;
 		upperBox.visible = mainBox.visible = infoBox.visible = true;

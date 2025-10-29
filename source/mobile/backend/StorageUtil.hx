@@ -82,6 +82,8 @@ class StorageUtil
 				daPath = '/storage/emulated/0/Android/media/' + lime.app.Application.current.meta.get('packageName');
 			case 'EXTERNAL_DATA':
 				daPath = '/storage/emulated/0/Android/data/${packageName}/files';
+			default:
+				daPath = getExternalDirectory(curStorageType) + '.Psych Extended';
 		}
 
 		daPath = Path.addTrailingSlash(daPath);

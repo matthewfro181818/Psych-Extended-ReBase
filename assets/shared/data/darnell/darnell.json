@@ -1,5 +1,6 @@
 {
 	"song": {
+		"cameraMode": "psych_new",
 		"player1": "pico-playable",
 		"player2": "darnell",
 		"events": [],

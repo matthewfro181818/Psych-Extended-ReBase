@@ -50,9 +50,10 @@ class MobilePad extends MobileInputManager implements IMobileControls {
 			for (buttonData in MobileData.dpadModes.get(DPad).buttons)
 			{
 				var buttonID:Array<MobileInputID> = Reflect.getProperty(this, buttonData.button).IDs; //Get ID With variable because otherwise it returns the null
+				var buttonStr:String = '${buttonData.button}';
 				Reflect.setField(this, buttonData.button,
-					createMobileButton(buttonData.x, buttonData.y, buttonData.graphic, CoolUtil.colorFromString(buttonData.color),
-						buttonID));
+					createVirtualButton(buttonData.x, buttonData.y, buttonData.graphic, CoolUtil.colorFromString(buttonData.color),
+						buttonID, buttonStr));
 				add(Reflect.field(this, buttonData.button));
 			}
 		}
@@ -65,9 +66,11 @@ class MobilePad extends MobileInputManager implements IMobileControls {
 			for (buttonData in MobileData.actionModes.get(Action).buttons)
 			{
 				var buttonID:Array<MobileInputID> = Reflect.getProperty(this, buttonData.button).IDs; //Get ID With variable because otherwise it returns the null
+				trace(buttonID);
+				var buttonStr:String = '${buttonData.button}';
 				Reflect.setField(this, buttonData.button,
-					createMobileButton(buttonData.x, buttonData.y, buttonData.graphic, CoolUtil.colorFromString(buttonData.color),
-						buttonID));
+					createVirtualButton(buttonData.x, buttonData.y, buttonData.graphic, CoolUtil.colorFromString(buttonData.color),
+						buttonID, buttonStr));
 				add(Reflect.field(this, buttonData.button));
 			}
 		}
@@ -78,12 +81,7 @@ class MobilePad extends MobileInputManager implements IMobileControls {
 		instance = this;
 	}
 
-	public function createMobileButton(x:Float, y:Float, Frames:String, ColorS:Int, ?bg:String, ?IDs:Array<MobileInputID>):Dynamic
-	{
-		return createVirtualButton(x, y, Frames, ColorS, IDs);
-	}
-
-	public function createVirtualButton(x:Float, y:Float, Frames:String, ?ColorS:Int = 0xFFFFFF, ?IDs:Array<MobileInputID>):MobileButton {
+	public function createVirtualButton(x:Float, y:Float, Frames:String, ?ColorS:Int = 0xFFFFFF, ?IDs:Array<MobileInputID>, ?strName:String):MobileButton {
 		var frames:FlxGraphic;
 
 		final path:String = Paths.getSharedPath() + 'mobile/MobileButton/VirtualPad/original/$Frames.png';
@@ -96,7 +94,27 @@ class MobilePad extends MobileInputManager implements IMobileControls {
 		else
 			frames = FlxGraphic.fromBitmapData(Assets.getBitmapData(Paths.getSharedPath() + 'mobile/MobileButton/VirtualPad/original/default.png'));
 
-		var button = new MobileButton(x, y, IDs);
+		trace("=== DETAILED DEBUG/DETAYLI DEBUG ===");
+		trace("strName: " + strName);
+		trace("IDs: " + IDs);
+		trace("IDs.length: " + IDs.length);
+		trace("IDs != null: " + (IDs != null));
+		trace("IDs.length > 0: " + (IDs.length > 0));
+
+		var conditionResult = (IDs != null && IDs.length > 0);
+		trace("Condition result: " + conditionResult);
+
+		if (conditionResult) {
+			trace("IF BLOCK EXECUTED/IF BLOĞU ÇALIŞTI - Setting strName to null/strName null yapılıyor");
+			strName = null;
+		} else {
+			trace("ELSE BLOCK EXECUTED/ELSE BLOĞU ÇALIŞTI - strName remains unchanged/strName değişmeyecek");
+		}
+
+		trace("Final/SON strName: " + strName);
+		trace("=== DEBUG END/DEBUG SONU ===");
+
+		var button = new MobileButton(x, y, IDs, strName);
 		button.frames = FlxTileFrames.fromGraphic(frames, FlxPoint.get(Std.int(frames.width / 2), frames.height));
 
 		button.updateHitbox();

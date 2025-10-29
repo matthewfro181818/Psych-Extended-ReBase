@@ -292,8 +292,6 @@ class PauseSubState extends MusicBeatSubstate
 				case "Leave Charting Mode":
 					restartSong();
 					PlayState.chartingMode = false;
-					if (Song.currentChartLoadSystem == 'psych_v1') editors.ChartingStateNew.curSec = 0;
-					else editors.ChartingState.curSec = 0;
 				case 'Skip Time':
 					if(curTime < Conductor.songPosition)
 					{

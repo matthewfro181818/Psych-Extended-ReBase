@@ -92,10 +92,11 @@ class StrumLine {
 
 class PlayState extends MusicBeatState
 {
+	//Variables for fixing the scripts
+	public var guitarHeroSustains:Bool = false;
 	#if TOUCH_CONTROLS
 	public var luaMobilePad:MobilePad; //trust me, you'll never need to access this directly
 	#end
-	public static var cameraMode:String;
 	
 	/**
 	 * Current camera target. -1 means no automatic camera targetting.
@@ -663,7 +664,7 @@ class PlayState extends MusicBeatState
 		// After all characters being loaded, it makes then invisible 0.01s later so that the player won't freeze when you change characters
 		// add(strumLine);
 
-		if (ClientPrefs.data.UseNewCamSystem || cameraMode == '0.7x')
+		if (SONG.cameraMode == 'psych_new' || ClientPrefs.data.UseNewCamSystem)
 		{
 			camFollow = new FlxObject(0, 0, 1, 1);
 			camFollow.setPosition(camPos.x, camPos.y);
@@ -677,7 +678,7 @@ class PlayState extends MusicBeatState
 
 			FlxG.camera.follow(camFollow, LOCKON, 0);
 		}
-		else if (!ClientPrefs.data.UseNewCamSystem || cameraMode == '0.6x')
+		else
 		{
 			camFollow = new FlxPoint();
 			camFollowPos = new FlxObject(0, 0, 1, 1);
@@ -701,14 +702,14 @@ class PlayState extends MusicBeatState
 
 		FlxG.camera.zoom = defaultCamZoom;
 
-		if (ClientPrefs.data.UseNewCamSystem || cameraMode == '0.7x')
+		if (SONG.cameraMode == 'psych_new' || ClientPrefs.data.UseNewCamSystem)
 			FlxG.camera.snapToTarget();
-		else if (!ClientPrefs.data.UseNewCamSystem || cameraMode == '0.6x')
+		else
 			FlxG.camera.focusOn(camFollow);
 
 		FlxG.worldBounds.set(0, 0, FlxG.width, FlxG.height);
 
-		if (!ClientPrefs.data.UseNewCamSystem || cameraMode == '0.6x')
+		if (SONG.cameraMode == 'psych_legacy' || !ClientPrefs.data.UseNewCamSystem)
 			FlxG.fixedTimestep = false;
 
 		moveCameraSection();
@@ -783,9 +784,7 @@ class PlayState extends MusicBeatState
 		if (ClientPrefs.data.pauseButton) {
 			addMobilePad("NONE", "PAUSE");
 			addMobilePadCamera();
-			mobilePad.buttonP.scale.set(0.8, 0.8);
-			mobilePad.x += 10;
-			mobilePad.y -= 10;
+			mobilePad.buttonP.scale.set(0.7, 0.7);
 		}
 		#end
 
@@ -2080,15 +2079,15 @@ class PlayState extends MusicBeatState
 			iconP1.swapOldIcon();
 		}*/
 		
-		if (ClientPrefs.data.UseNewCamSystem || cameraMode == '0.7x')
+		if (SONG.cameraMode == 'psych_new' || ClientPrefs.data.UseNewCamSystem)
 			FlxG.camera.followLerp = 0;
 
 		callOnScripts('onUpdate', [elapsed]);
 
 		if(!inCutscene) {
-			if (ClientPrefs.data.UseNewCamSystem || cameraMode == '0.7x')
+			if (SONG.cameraMode == 'psych_new' || ClientPrefs.data.UseNewCamSystem)
 				FlxG.camera.followLerp = CoolUtil.boundTo(elapsed * 2.4 * cameraSpeed * playbackRate, 0, 1);
-			else if (!ClientPrefs.data.UseNewCamSystem || cameraMode == '0.6x')
+			else
 			{
 				lerpVal = CoolUtil.boundTo(elapsed * 2.4 * cameraSpeed * playbackRate, 0, 1);
 				camFollowPos.setPosition(FlxMath.lerp(camFollowPos.x, camFollow.x, lerpVal), FlxMath.lerp(camFollowPos.y, camFollow.y, lerpVal));
@@ -2329,12 +2328,12 @@ class PlayState extends MusicBeatState
 		}
 		#end
 
-		if (ClientPrefs.data.UseNewCamSystem || cameraMode == '0.7x')
+		if (SONG.cameraMode == 'psych_new' || ClientPrefs.data.UseNewCamSystem)
 		{
 			setOnScripts('cameraX', camFollow.x);
 			setOnScripts('cameraY', camFollow.y);
 		}
-		else if (!ClientPrefs.data.UseNewCamSystem || cameraMode == '0.6x')
+		else
 		{
 			setOnScripts('cameraX', camFollowPos.x);
 			setOnScripts('cameraY', camFollowPos.y);
@@ -2346,7 +2345,7 @@ class PlayState extends MusicBeatState
 
 	function openPauseMenu()
 	{
-		if (ClientPrefs.data.UseNewCamSystem || cameraMode == '0.7x') FlxG.camera.followLerp = 0;
+		if (SONG.cameraMode == 'psych_new' || ClientPrefs.data.UseNewCamSystem) FlxG.camera.followLerp = 0;
 		persistentUpdate = false;
 		persistentDraw = true;
 		paused = true;
@@ -2729,7 +2728,7 @@ class PlayState extends MusicBeatState
 
 		if (gf != null && SONG.notes[sec].gfSection)
 		{
-			if (ClientPrefs.data.UseNewCamSystem || cameraMode == '0.7x')
+			if (SONG.cameraMode == 'psych_new' || ClientPrefs.data.UseNewCamSystem)
 			{
 				if (gf.isCodenameChar) {
 					var data:Character.CamPosData = gf.getCharacterCamPos();
@@ -2743,7 +2742,7 @@ class PlayState extends MusicBeatState
 				else
 					camFollow.setPosition(gf.getMidpoint().x, gf.getMidpoint().y);
 			}
-			else if (!ClientPrefs.data.UseNewCamSystem || cameraMode == '0.6x')
+			else
 			{
 				if (gf.isCodenameChar) {
 					var data:Character.CamPosData = gf.getCharacterCamPos();
@@ -2788,7 +2787,7 @@ class PlayState extends MusicBeatState
 	{
 		if(isDad)
 		{
-			if (ClientPrefs.data.UseNewCamSystem || cameraMode == '0.7x')
+			if (SONG.cameraMode == 'psych_new' || ClientPrefs.data.UseNewCamSystem)
 			{
 				if (dad.isCodenameChar) {
 					var data:Character.CamPosData = dad.getCharacterCamPos();
@@ -2802,7 +2801,7 @@ class PlayState extends MusicBeatState
 				else
 					camFollow.setPosition(dad.getMidpoint().x + 150, dad.getMidpoint().y - 100);
 			}
-			else if (!ClientPrefs.data.UseNewCamSystem || cameraMode == '0.6x')
+			else
 			{
 				if (dad.isCodenameChar) {
 					var data:Character.CamPosData = dad.getCharacterCamPos();
@@ -2830,7 +2829,7 @@ class PlayState extends MusicBeatState
 		}
 		else
 		{
-			if (ClientPrefs.data.UseNewCamSystem || cameraMode == '0.7x') {
+			if (SONG.cameraMode == 'psych_new' || ClientPrefs.data.UseNewCamSystem) {
 				if (boyfriend.isCodenameChar) {
 					var data:Character.CamPosData = boyfriend.getCharacterCamPos();
 					if (data.amount > 0) {
@@ -2843,7 +2842,7 @@ class PlayState extends MusicBeatState
 				else
 					camFollow.setPosition(boyfriend.getMidpoint().x - 100, boyfriend.getMidpoint().y - 100);
 			}
-			else if (!ClientPrefs.data.UseNewCamSystem || cameraMode == '0.6x')
+			else
 			{
 				if (boyfriend.isCodenameChar) {
 					var data:Character.CamPosData = boyfriend.getCharacterCamPos();
@@ -2890,7 +2889,7 @@ class PlayState extends MusicBeatState
 	}
 
 	public function snapCamFollowToPos(x:Float, y:Float) {
-		if (!ClientPrefs.data.UseNewCamSystem || cameraMode == '0.6x')
+		if (SONG.cameraMode == 'psych_legacy' || !ClientPrefs.data.UseNewCamSystem)
 		{
 			camFollow.set(x, y);
 			camFollowPos.setPosition(x, y);
@@ -3019,11 +3018,11 @@ class PlayState extends MusicBeatState
 					FlxTransitionableState.skipNextTransIn = true;
 					FlxTransitionableState.skipNextTransOut = true;
 
-					if (ClientPrefs.data.UseNewCamSystem || cameraMode == '0.7x')
+					if (SONG.cameraMode == 'psych_new' || ClientPrefs.data.UseNewCamSystem)
 					{
 						prevCamFollow = camFollow;
 					}
-					else if (!ClientPrefs.data.UseNewCamSystem || cameraMode == '0.6x')
+					else
 					{
 						prevCamFollow = camFollow;
 						prevCamFollowPos = camFollowPos;
@@ -4415,15 +4414,11 @@ class PlayState extends MusicBeatState
 	public function reloadControls(?customControllerValue:Int, ?mode:String)
 	{
 		removeMobileControls();
-		addMobileControls(customControllerValue, mode);
-		if (customControllerValue <= 3 && customControllerValue >= 0) mobilec.instance.alpha = ClientPrefs.data.mobilePadAlpha;
+		addMobileControls(mode);
 	}
 
 	public function addControls(?customControllerValue:Int, ?mode:String)
-	{
-		addMobileControls(customControllerValue, mode);
-		if (customControllerValue <= 3 && customControllerValue >= 0) mobilec.instance.alpha = ClientPrefs.data.mobilePadAlpha;
-	}
+		addMobileControls(mode);
 
 	public function removeControls()
 		removeMobileControls();

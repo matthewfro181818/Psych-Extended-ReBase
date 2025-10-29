@@ -75,7 +75,7 @@ class Character_CNE extends FunkinSprite implements IBeatReceiver implements IOf
 		xml = getXMLFromCharName(this);
 
 		if(!disableScripts)
-			script = Script.create(Paths.script('data/' + Path.withoutExtension(Paths.xmlMod('characters/$curCharacter')), null, true));
+			script = Script.create(Paths.script('data/' + Path.withoutExtension(Paths.xml('characters/$curCharacter')), null, true));
 		if (script == null)
 			script = new DummyScript(curCharacter);
 
@@ -522,7 +522,7 @@ class Character_CNE extends FunkinSprite implements IBeatReceiver implements IOf
 
 		var xml:Access = null;
 		while (true) {
-			var xmlPath:String = Paths.xmlMod('characters/$character');
+			var xmlPath:String = Paths.xml('characters/$character');
 			if (!FileSystem.exists(xmlPath)) {
 				character = FALLBACK_CHARACTER;
 				if (char != null)

@@ -59,7 +59,7 @@ class Stage extends FlxBasic implements IBeatReceiver {
 		this.state = state;
 
 		stageFile = stage;
-		stagePath = Paths.xmlMod('stages/$stageFile');
+		stagePath = Paths.xml('stages/$stageFile');
 		trace(stagePath);
 		try if (FileSystem.exists(stagePath)) stageXML = new Access(Xml.parse(File.getContent(stagePath)).firstElement())
 		catch(e) trace('Couldn\'t load stage "$stageFile": ${e.message}');

@@ -103,17 +103,17 @@ class Paths_CNE {
 				cur++;
 			}
 			return finalFrames;
-		} else if (FileSystem.exists(Paths.getPath('images/$noExt.xml', null, true))) {
+		} else if (FileSystem.exists(Paths.getPath('images/$noExt.xml', null, true)))
 			return Paths.getSparrowAtlas(path);
-		} else if (FileSystem.exists('$noExt.txt')) {
+		else if (FileSystem.exists('$noExt.txt'))
 			return Paths_CNE.getPackerAtlasAlt(noExt);
-		} else if (FileSystem.exists('$noExt.json')) {
+		else if (FileSystem.exists('$noExt.json')) {
 			var aSprite = Paths_CNE.getAsepriteAtlasAlt(noExt);
 			return aSprite;
 		}
 
 		//var graph:FlxGraphic = FlxG.bitmap.add(path, Unique, Key);
-		var graph:FlxGraphic = Paths.returnGraphic(path); //use returnGraphic bc I want to use String instead of path (also, path one is buggy)
+		var graph:FlxGraphic = Paths.image(path); //use returnGraphic bc I want to use String instead of path (also, path one is buggy)
 		if (graph == null)
 			return null;
 		return graph.imageFrame;

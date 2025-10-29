@@ -3,8 +3,8 @@
     {
       "button": "buttonP",
       "graphic": "pause",
-      "x": 1156,
-      "y": 2,
+      "x": 1180,
+      "y": -20,
       "color": "0xE5DE00"
     }
   ]

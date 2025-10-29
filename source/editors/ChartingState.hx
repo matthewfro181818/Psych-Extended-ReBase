@@ -208,9 +208,7 @@ class ChartingState extends MusicBeatState
 				player2: 'dad',
 				gfVersion: 'gf',
 				speed: 1,
-				offset: 1,
 				stage: 'stage',
-				format: 'psych_v1',
 				validScore: false
 			};
 			addSection();
@@ -399,8 +397,7 @@ class ChartingState extends MusicBeatState
 		updateGrid();
 
 		#if TOUCH_CONTROLS
-		addMobilePad("CHART_EDITOR", "CHART_EDITOR");
-		if (!usingMobile) mobilePad.active = mobilePad.visible = false;
+		if (usingMobile) addMobilePad("CHART_EDITOR", "CHART_EDITOR");
 		#end
 
 		super.create();
@@ -511,16 +508,11 @@ class ChartingState extends MusicBeatState
 		stepperSpeed.name = 'song_speed';
 		blockPressWhileTypingOnStepper.push(stepperSpeed);
 		#if MODS_ALLOWED
-		var directories:Array<String> = [
-			Paths.mods('characters/'), Paths.mods(Mods.currentModDirectory + '/characters/'), Paths.getSharedPath('characters/'),
-			Paths.mods('data/characters/'), Paths.mods(Mods.currentModDirectory + '/data/characters/'), Paths.getSharedPath('data/characters/')
-		];
-		for(mod in Mods.getGlobalMods()) {
+		var directories:Array<String> = [Paths.mods('characters/'), Paths.mods(Mods.currentModDirectory + '/characters/'), Paths.getSharedPath('characters/')];
+		for(mod in Mods.getGlobalMods())
 			directories.push(Paths.mods(mod + '/characters/'));
-			directories.push(Paths.mods(mod + '/data/characters/'));
-		}
 		#else
-		var directories:Array<String> = [Paths.getSharedPath('characters/'), Paths.getSharedPath('data/characters/')];
+		var directories:Array<String> = [Paths.getSharedPath('characters/')];
 		#end
 
 		var tempArray:Array<String> = [];
@@ -537,14 +529,11 @@ class ChartingState extends MusicBeatState
 			if(FileSystem.exists(directory)) {
 				for (file in Paths.readDirectory(directory)) {
 					var path = haxe.io.Path.join([directory, file]);
-					var fileTypes:Array<String> = ['.json', '.xml']; //make this easier to change
-					for (fileType in fileTypes) {
-						if (!FileSystem.isDirectory(path) && file.endsWith(fileType)) {
-							var charToCheck:String = file.substr(0, file.length - fileType.length);
-							if(charToCheck.trim().length > 0 && !charToCheck.endsWith('-dead') && !tempArray.contains(charToCheck)) {
-								tempArray.push(charToCheck);
-								characters.push(charToCheck);
-							}
+					if (!FileSystem.isDirectory(path) && file.endsWith('.json')) {
+						var charToCheck:String = file.substr(0, file.length - 5);
+						if(charToCheck.trim().length > 0 && !charToCheck.endsWith('-dead') && !tempArray.contains(charToCheck)) {
+							tempArray.push(charToCheck);
+							characters.push(charToCheck);
 						}
 					}
 				}
@@ -1506,11 +1495,6 @@ class ChartingState extends MusicBeatState
 	var playtestingOnComplete:Void->Void = null;
 	override function closeSubState()
 	{
-		persistentUpdate = true;
-		#if TOUCH_CONTROLS
-		addMobilePad("CHART_EDITOR", "CHART_EDITOR");
-		if (!usingMobile) mobilePad.active = mobilePad.visible = false;
-		#end
 		if(playtesting)
 		{
 			FlxG.sound.music.pause();
@@ -1540,6 +1524,9 @@ class ChartingState extends MusicBeatState
 			DiscordClient.changePresence("Chart Editor", StringTools.replace(_song.song, '-', ' '));
 			#end
 		}
+		#if TOUCH_CONTROLS
+		persistentUpdate = true;
+		#end
 		super.closeSubState();
 	}
 
@@ -1803,7 +1790,8 @@ class ChartingState extends MusicBeatState
 								{
 									selectNote(note);
 								}
-								else #end if (FlxG.keys.pressed.ALT)
+								#end
+								else if (FlxG.keys.pressed.ALT)
 								{
 									selectNote(note);
 									curSelectedNote[3] = curNoteTypes[currentType];
@@ -1945,9 +1933,10 @@ class ChartingState extends MusicBeatState
 				playtesting = true;
 				playtestingTime = Conductor.songPosition;
 				playtestingOnComplete = FlxG.sound.music.onComplete;
+				#if TOUCH_CONTROLS
 				persistentUpdate = false;
+				#end
 				openSubState(new editors.EditorPlayState(playbackSpeed));
-				#if TOUCH_CONTROLS removeMobilePad(); #end
 			}
 			else if (FlxG.keys.justPressed.ENTER #if TOUCH_CONTROLS || mobilePad.buttonA.justPressed #end)
 			{
@@ -1976,7 +1965,6 @@ class ChartingState extends MusicBeatState
 
 
 			if (FlxG.keys.justPressed.BACKSPACE #if TOUCH_CONTROLS || mobilePad.buttonB.justPressed #end) {
-				persistentUpdate = false; //disable the state update for fixing the quitting issue
 				// Protect against lost data when quickly leaving the chart editor.
 				autosaveSong();
 				PlayState.chartingMode = false;
@@ -2947,7 +2935,7 @@ class ChartingState extends MusicBeatState
 			note.noteType = i[3];
 		} else { //Event note
 			note.loadGraphic(Paths.image('eventArrow'));
-			if (ClientPrefs.data.useRGB) note.rgbShader.enabled = false;
+			note.rgbShader.enabled = false;
 			note.eventName = getEventName(i[1]);
 			note.eventLength = i[1].length;
 			if(i[1].length < 2)

@@ -76,6 +76,7 @@ import TitleState;
 	#if EXTRA_MAINMENU public var MainMenuStyle:String = 'Psych'; #end
 	#if EXTRA_TRANSITIONS public var TransitionStyle:String = 'Psych'; #end
 
+	public var cacheOnGPU:Bool = false;
 	/* Psych Engine 0.7x */
 	public var discordRPC:Bool = true;
 	public var noteSkin:String = 'Default';
