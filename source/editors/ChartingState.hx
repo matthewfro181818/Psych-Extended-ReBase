@@ -1790,8 +1790,7 @@ class ChartingState extends MusicBeatState
 								{
 									selectNote(note);
 								}
-								#end
-								else if (FlxG.keys.pressed.ALT)
+								else #end if (FlxG.keys.pressed.ALT)
 								{
 									selectNote(note);
 									curSelectedNote[3] = curNoteTypes[currentType];
