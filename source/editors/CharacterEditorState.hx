@@ -914,7 +914,7 @@ class CharacterEditorState extends MusicBeatState implements PsychUIEventHandler
 		if(ghostAnims != null && ghostAnims.length > 1)
 		{
 			if((FlxG.keys.justPressed.Q #if TOUCH_CONTROLS || mobilePad.buttonQ.justPressed #end) && (changedGhostAnim = true)) curGhostAnim--;
-			else if(FlxG.keys.justPressed.E #if TOUCH_CONTROLS || mobilePad.buttonE.justPressed #end) && (changedGhostAnim = true)) curGhostAnim++;
+			else if((FlxG.keys.justPressed.E #if TOUCH_CONTROLS || mobilePad.buttonE.justPressed #end) && (changedGhostAnim = true)) curGhostAnim++;
 
 			if(changedGhostAnim)
 			{
