@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-character>
+<character x="-600" y="-250" sprite="perditusp2" scale="1.2" antialiasing="false" icon="icon-perditusp2" holdTime="6.1">
+	<anim name="idle" anim="perditusp2 idle" x="380" y="275" fps="12" loop="false"/>
+	<anim name="singUP" anim="perditusp2 up" x="370" y="375" fps="16" loop="false"/>
+	<anim name="singLEFT" anim="perditusp2 left" x="336" y="240" fps="16" loop="false"/>
+	<anim name="singRIGHT" anim="perditusp2 right" x="345" y="255" fps="16" loop="false"/>
+	<anim name="singDOWN" anim="perditusp2 down" x="374" y="140" fps="16" loop="false"/>
+	<anim name="idle" anim="perditusp2 idle" x="380" y="275" fps="12" loop="false"/>
+	<anim name="singLEFT" anim="perditusp2 left" x="336" y="240" fps="16" loop="false"/>
+	<anim name="singRIGHT" anim="perditusp2 right" x="345" y="255" fps="16" loop="false"/>
+	<anim name="singUP" anim="perditusp2 up" x="370" y="375" fps="16" loop="false"/>
+	<anim name="singDOWN" anim="perditusp2 down" x="374" y="140" fps="16" loop="false"/>
+</character>

@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-character>
+<character x="80" y="350" sprite="perditus_phase_1" icon="perditus-phase-1" color="#313E80" holdTime="16">
+	<anim name="idle" anim="idle" loop="true"/>
+	<anim name="singUP" anim="up" x="33" y="39"/>
+	<anim name="singLEFT" anim="left" x="70" y="4"/>
+	<anim name="singRIGHT" anim="right" x="4" y="-1"/>
+	<anim name="singDOWN" anim="down" x="18" y="2"/>
+	<anim name="breakmyphone" anim="animm" x="63" y="13"/>
+</character>

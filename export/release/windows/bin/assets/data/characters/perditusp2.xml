@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="-400" y="-330" scale="1.4" antialiasing="false" icon="perditusp2" color="#382A72" holdTime="6.1">
+	<anim name="idle" anim="perditusp2new idle" fps="12"/>
+	<anim name="singUP" anim="perditusp2new up" fps="12"/>
+	<anim name="singLEFT" anim="perditusp2new left" x="-157.86" y="10" fps="12"/>
+	<anim name="singRIGHT" anim="perditusp2new right" fps="12"/>
+	<anim name="singDOWN" anim="perditusp2new down" fps="12"/>
+</character>

@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="-300" y="100" sprite="Dave_phase_3" scale="0.9" flipX="true" camx="-100" isPlayer="true" icon="davep3" color="#A7CBEC" holdTime="6.1">
+	<anim name="idle" anim="Idle" y="1.11" fps="12" loop="true"/>
+	<anim name="singUP" anim="Up" fps="12"/>
+	<anim name="singDOWN" anim="Down" fps="12"/>
+	<anim name="singLEFT" anim="Left" fps="12"/>
+	<anim name="singRIGHT" anim="Right" fps="12"/>
+</character>

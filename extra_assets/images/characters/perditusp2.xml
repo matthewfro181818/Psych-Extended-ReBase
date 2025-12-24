@@ -1,0 +1,19 @@
+<?xml version='1.0' encoding='utf-8'?>
+<TextureAtlas imagePath="perditusp2new.png">
+<SubTexture name="perditusp2new idle0000" x="604" y="627" width="331" height="558" frameX="-510" frameY="-146" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new idle0001" x="935" y="627" width="323" height="546" frameX="-506" frameY="-131" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new idle0002" x="0" y="1204" width="325" height="543" frameX="-512" frameY="-125" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new idle0003" x="325" y="1204" width="324" height="536" frameX="-512" frameY="-126" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new up0000" x="0" y="0" width="423" height="627" frameX="-449" frameY="-2" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new up0001" x="423" y="0" width="423" height="612" frameX="-439" frameY="-17" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new up0002" x="846" y="0" width="430" height="592" frameX="-439" frameY="-37" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new right0000" x="1048" y="1204" width="669" height="465" frameX="-526" frameY="-202" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new right0001" x="630" y="1747" width="639" height="448" frameX="-523" frameY="-208" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new right0002" x="0" y="1747" width="630" height="451" frameX="-514" frameY="-203" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new left0000" x="0" y="627" width="604" height="577" frameX="-21" frameY="-85" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new left0001" x="1276" y="0" width="571" height="555" frameX="-79" frameY="-103" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new left0002" x="1276" y="555" width="539" height="553" frameX="-121" frameY="-101" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new down0000" x="1269" y="1747" width="418" height="440" frameX="-525" frameY="-280" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new down0001" x="1847" y="0" width="413" height="456" frameX="-532" frameY="-260" frameWidth="1280" frameHeight="720" />
+<SubTexture name="perditusp2new down0002" x="649" y="1204" width="399" height="470" frameX="-533" frameY="-239" frameWidth="1280" frameHeight="720" />
+</TextureAtlas>

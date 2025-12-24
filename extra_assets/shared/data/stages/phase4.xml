@@ -1,0 +1,12 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="stages/phase4/" name="phase4" zoom="0.4">
+	<sprite x="-214.622421506583" y="259.141227679729" type="none" name="fogtemp" sprite="fog" scroll="0.3" scalex="8.65774774774779" skewx="-0.0147048016294491" scaley="8.65614802049944"/>
+	<sprite x="214" scroll="0.1" sprite="mooon" y="-545" type="none" scale="1.54" name="moon"/>
+	<sprite x="-393.102332330852" scroll="0.6" sprite="floatingASSgates" y="223.700491972605" type="none" scale="0.73" name="gates2"/>
+	<sprite x="-660.165973259027" scroll="0.8" sprite="floatingASSgates" y="-465.10239150595" type="none" skewx="0.14" name="gates"/>
+	<sprite x="-289.529345089692" sprite="floatingdavehouse" y="-1228.9758150779" type="none" name="house"/>
+	<girlfriend x="838.703075345413" y="192.351436871512"/>
+	<dad x="-1154.84033868642" y="-239.271713220297"/>
+	<boyfriend x="331"/>
+	<combo x="100"/>
+</stage>

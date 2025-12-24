@@ -1,0 +1,328 @@
+{
+	"events": [
+		{
+			"params": [
+				1,
+				4,
+				"sine",
+				"InOut"
+			],
+			"name": "Tween Camera Movement",
+			"time": 2000
+		}
+	],
+	"stage": "phase2",
+	"codenameChart": true,
+	"scrollSpeed": 2,
+	"chartVersion": "1.6.0",
+	"strumLines": [
+		{
+			"keyCount": 4,
+			"notes": [
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 375,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 500,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 625,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 750,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 875,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 1000,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 125,
+					"time": 1125,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 125,
+					"time": 1500,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 1750,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 0,
+					"time": 1875,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 0,
+					"time": 2000,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 2125,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 250,
+					"time": 2375,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 125,
+					"time": 2750,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 0,
+					"time": 3000,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 125,
+					"time": 3125,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 125,
+					"time": 3250,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 125,
+					"time": 3375,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 3625,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 0,
+					"time": 3750,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 0,
+					"time": 3875,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 4000,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 0,
+					"time": 4125,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 125,
+					"time": 4375,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 4500,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 125,
+					"time": 4625,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 125,
+					"time": 4875,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 0,
+					"time": 5250,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 0,
+					"time": 5375,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 5500,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 5625,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 250,
+					"time": 5750,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 250,
+					"time": 6125,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 125,
+					"time": 6500,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 125,
+					"time": 6750,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 0,
+					"time": 7000,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 7125,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 0,
+					"time": 7250,
+					"type": 0
+				},
+				{
+					"id": 1,
+					"sLen": 0,
+					"time": 7500,
+					"type": 0
+				},
+				{
+					"id": 0,
+					"sLen": 125,
+					"time": 7750,
+					"type": 0
+				},
+				{
+					"id": 3,
+					"sLen": 375,
+					"time": 8000,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 8500,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 8625,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 8750,
+					"type": 0
+				},
+				{
+					"id": 2,
+					"sLen": 0,
+					"time": 8875,
+					"type": 0
+				}
+			],
+			"visible": true,
+			"strumSpacing": 1,
+			"strumPos": [
+				0,
+				50
+			],
+			"position": "dad",
+			"strumScale": 1,
+			"vocalsSuffix": "",
+			"strumLinePos": 0.25,
+			"type": 0,
+			"characters": [
+				"perditusp2"
+			]
+		},
+		{
+			"keyCount": 4,
+			"notes": [],
+			"visible": true,
+			"strumSpacing": 1,
+			"strumPos": [
+				0,
+				50
+			],
+			"position": "boyfriend",
+			"strumScale": 1,
+			"vocalsSuffix": "",
+			"strumLinePos": 0.75,
+			"type": 0,
+			"characters": [
+				"davep2"
+			]
+		}
+	],
+	"noteTypes": []
+}

@@ -1,0 +1,15 @@
+{
+	"color": "#FFFFFF",
+	"opponentModeAllowed": true,
+	"difficulties": [
+		"hard",
+		""
+	],
+	"icon": "Icon",
+	"coopAllowed": true,
+	"stepsPerBeat": 4,
+	"displayName": "dont touch me",
+	"needsVoices": false,
+	"beatsPerMeasure": 4,
+	"bpm": 120
+}

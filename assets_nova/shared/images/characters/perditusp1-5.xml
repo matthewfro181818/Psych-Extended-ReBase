@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?><TextureAtlas imagePath="perditusp1-5.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="IDLE0000" x="341" y="1902" width="283" height="463" frameX="-188" frameY="-102" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="IDLE0001" x="0" y="2369" width="281" height="460" frameX="-188" frameY="-105" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="IDLE0002" x="624" y="1902" width="295" height="463" frameX="-172" frameY="-102" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="IDLE0003" x="327" y="962" width="375" height="471" frameX="-133" frameY="-93" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="IDLE0004" x="361" y="1434" width="354" height="467" frameX="-145" frameY="-97" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="DOWN0000" x="687" y="2369" width="411" height="452" frameX="-113" frameY="-113" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="DOWN0001" x="281" y="2369" width="406" height="459" frameX="-120" frameY="-106" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="RIGHT0000" x="715" y="1434" width="341" height="467" frameX="-222" frameY="-98" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="RIGHT0001" x="0" y="1902" width="341" height="467" frameX="-197" frameY="-98" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="LEFT0000" x="685" y="488" width="339" height="472" frameX="-88" frameY="-93" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="LEFT0001" x="702" y="962" width="326" height="470" frameX="-113" frameY="-95" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="UP0000" x="0" y="0" width="428" height="488" frameX="-113" frameY="-77" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="UP0001" x="428" y="0" width="434" height="479" frameX="-112" frameY="-86" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="FUCK0000" x="0" y="1434" width="361" height="468" frameX="-132" frameY="-97" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="FUCK0001" x="310" y="488" width="375" height="473" frameX="-116" frameY="-92" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="FUCK0002" x="862" y="0" width="304" height="475" frameX="-139" frameY="-90" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="FUCK0003" x="0" y="488" width="310" height="474" frameX="-119" frameY="-91" frameWidth="640" frameHeight="640"/>
+	<SubTexture name="FUCK0004" x="0" y="962" width="327" height="472" frameX="-104" frameY="-93" frameWidth="640" frameHeight="640"/>
+</TextureAtlas>

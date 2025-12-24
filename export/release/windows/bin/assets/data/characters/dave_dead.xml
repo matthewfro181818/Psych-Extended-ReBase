@@ -1,0 +1,11 @@
+<!--There was gonna be a game over where perditus would puke on dave and dave would disintegrate,
+It was never made, but who knows, we might do a minor update with a bunch of asset changes/additions-->
+
+<!--For now, have the 3.0 dave gameover-->
+
+<!DOCTYPE codename-engine-character>
+<character x="200" y="100" sprite="Dave_Dead" isPlayer="true" icon="dave_dead">
+	<anim name="firstDeath" anim="dave dead hit"/>
+	<anim name="deathLoop" anim="dave dead loop" x="-26"/>
+	<anim name="deathConfirm" anim="dave dead retry confirm" x="-26"/>
+</character>

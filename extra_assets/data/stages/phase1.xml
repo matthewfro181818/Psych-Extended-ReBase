@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="stages/" zoom="0.6">
+	<sprite scrolly="0.6" x="47" y="27" sprite="phase1/sky" scale="2.8" scrollx="0.6" name="sky"/>
+	<sprite x="108" y="360" sprite="phase1/ground" scale="2.8" name="ground"/>
+	<gf x="421" y="353"/>
+	<dad x="-12" y="310"/>
+	<boyfriend x="1004" y="327"/>
+	<combo x="581" y="609"/>
+</stage>

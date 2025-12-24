@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?><TextureAtlas imagePath="Dave_phase_3.png">
+	<!-- Created using the Spritesheet and XML generator -->
+	<!-- https://uncertainprod.github.io/FNF-Spritesheet-XML-generator-Web -->
+	<SubTexture name="Idle0000" x="807" y="664" width="807" height="618" frameX="-56" frameY="-101" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Idle0001" x="0" y="664" width="807" height="620" frameX="-56" frameY="-99" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Idle0002" x="1614" y="664" width="807" height="618" frameX="-56" frameY="-101" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Up0000" x="0" y="0" width="815" height="664" frameX="-56" frameY="-55" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Up0001" x="815" y="0" width="818" height="664" frameX="-56" frameY="-55" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Up0002" x="1633" y="0" width="820" height="664" frameX="-56" frameY="-55" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Down0000" x="825" y="2500" width="820" height="601" frameX="-56" frameY="-118" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Down0001" x="1643" y="1895" width="822" height="603" frameX="-56" frameY="-116" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Down0002" x="0" y="1895" width="828" height="605" frameX="-56" frameY="-114" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Right0000" x="1645" y="2500" width="833" height="600" frameX="-56" frameY="-119" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Right0001" x="0" y="2500" width="825" height="602" frameX="-56" frameY="-117" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Right0002" x="828" y="1895" width="815" height="604" frameX="-56" frameY="-115" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Left0000" x="1599" y="1284" width="789" height="610" frameX="-56" frameY="-109" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Left0001" x="0" y="1284" width="794" height="611" frameX="-56" frameY="-108" frameWidth="1280" frameHeight="720"/>
+	<SubTexture name="Left0002" x="794" y="1284" width="805" height="611" frameX="-56" frameY="-108" frameWidth="1280" frameHeight="720"/>
+</TextureAtlas>

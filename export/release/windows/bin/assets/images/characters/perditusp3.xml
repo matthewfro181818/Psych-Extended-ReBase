@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?><!--
+Created with Tex-Packer-EX v0.6.8 https://strawberrysage.github.io/tex-packer-ex
+--><TextureAtlas imagePath="texture.png" width="7896" height="2649">
+  <SubTexture name="p3perditus down0000.png" x="0" y="2180" width="657" height="505" frameX="-348" frameY="-182" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus down0001.png" x="657" y="2180" width="651" height="504" frameX="-350" frameY="-179" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus down0002.png" x="3770" y="1665" width="585" height="510" frameX="-386" frameY="-164" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus downALT0000.png" x="3483" y="2180" width="498" height="497" rotated="true" frameX="-409" frameY="-189" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus downALT0001.png" x="2984" y="2180" width="499" height="498" rotated="true" frameX="-406" frameY="-184" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus downALT0002.png" x="3981" y="2180" width="501" height="485" rotated="true" frameX="-401" frameY="-173" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus idle0000.png" x="523" y="1665" width="558" height="514" frameX="-378" frameY="-155" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus idle0001.png" x="2146" y="1665" width="562" height="512" frameX="-374" frameY="-157" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus idle0002.png" x="4460" y="1135" width="551" height="520" frameX="-383" frameY="-152" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus idle0003.png" x="2787" y="1135" width="553" height="524" frameX="-386" frameY="-149" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus idle0004.png" x="1161" y="601" width="554" height="530" frameX="-388" frameY="-144" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus idle0005.png" x="1715" y="601" width="552" height="530" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus left0000.png" x="4355" y="1665" width="521" height="508" rotated="true" frameX="-355" frameY="-148" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus left0001.png" x="1081" y="1665" width="524" height="514" rotated="true" frameX="-357" frameY="-146" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus left0002.png" x="2708" y="1665" width="517" height="512" rotated="true" frameX="-387" frameY="-153" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus leftALT0000.png" x="2872" y="0" width="558" height="536" frameX="-420" frameY="-135" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus leftALT0001.png" x="607" y="601" width="554" height="533" frameX="-418" frameY="-138" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus leftALT0002.png" x="3340" y="1135" width="530" height="524" rotated="true" frameX="-411" frameY="-141" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0000.png" x="1715" y="601" width="552" height="530" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0001.png" x="2267" y="601" width="551" height="530" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0002.png" x="2818" y="601" width="553" height="530" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0003.png" x="3371" y="601" width="552" height="530" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0004.png" x="3923" y="601" width="558" height="530" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0005.png" x="0" y="1135" width="549" height="530" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0006.png" x="549" y="1135" width="558" height="530" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0007.png" x="1107" y="1135" width="547" height="530" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0008.png" x="1654" y="1135" width="560" height="530" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0009.png" x="2214" y="1135" width="573" height="530" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0010.png" x="2454" y="2180" width="530" height="502" rotated="true" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus micbreak0011.png" x="1308" y="2180" width="530" height="504" rotated="true" frameX="-391" frameY="-145" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus right0000.png" x="3430" y="0" width="609" height="535" frameX="-415" frameY="-136" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus right0001.png" x="0" y="601" width="607" height="534" frameX="-411" frameY="-137" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus right0002.png" x="3870" y="1135" width="590" height="521" frameX="-395" frameY="-150" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus rightALT0000.png" x="0" y="0" width="687" height="601" frameX="-321" frameY="-57" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus rightALT0001.png" x="687" y="0" width="681" height="601" frameX="-324" frameY="-57" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus rightALT0002.png" x="1838" y="2180" width="616" height="504" frameX="-358" frameY="-154" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus up0000.png" x="1368" y="0" width="752" height="550" frameX="-259" frameY="-119" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus up0001.png" x="2120" y="0" width="752" height="544" frameX="-260" frameY="-123" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus up0002.png" x="4039" y="0" width="699" height="535" frameX="-235" frameY="-132" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus upALT0000.png" x="3225" y="1665" width="545" height="511" rotated="true" frameX="-391" frameY="-126" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus upALT0001.png" x="1605" y="1665" width="541" height="513" rotated="true" frameX="-390" frameY="-130" frameWidth="1280" frameHeight="720"/>
+  <SubTexture name="p3perditus upALT0002.png" x="0" y="1665" width="523" height="515" frameX="-385" frameY="-156" frameWidth="1280" frameHeight="720"/>
+</TextureAtlas>

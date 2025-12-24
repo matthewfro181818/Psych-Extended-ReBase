@@ -1,0 +1,15 @@
+{
+	"customValues": {},
+	"color": "#000000",
+	"opponentModeAllowed": false,
+	"difficulties": [
+		"HARD"
+	],
+	"icon": "perditus-phase-1",
+	"coopAllowed": false,
+	"stepsPerBeat": 4,
+	"displayName": "Inadequacy",
+	"needsVoices": true,
+	"beatsPerMeasure": 4,
+	"bpm": 196
+}

@@ -1,0 +1,14 @@
+<!DOCTYPE codename-engine-character>
+<character x="-400" y="-100" scale="0.8" camx="100" icon="icon-bamb-sexy" color="#690007" holdTime="6.1">
+	<anim name="idle" anim="p3perditus idle0" fps="12"/>
+	<anim name="singUP" anim="p3perditus up0" fps="12"/>
+	<anim name="singUP-alt" anim="p3perditus upALT" fps="12"/>
+	<anim name="singLEFT" anim="p3perditus left0" fps="12"/>
+	<anim name="singLEFT-alt" anim="p3perditus leftALT" fps="12"/>
+	<anim name="singDOWN" anim="p3perditus down0" fps="12"/>
+	<anim name="singDOWN-alt" anim="p3perditus downALT" fps="12"/>
+	<anim name="singRIGHT" anim="p3perditus right0" fps="12"/>
+	<anim name="singRIGHT-alt" anim="p3perditus rightALT" fps="12"/>
+	<anim name="break" anim="p3perditus micbreak" fps="12"/>
+	<anim name="idle-alt" anim="p3perditus micbreak" fps="12" loop="true" indices="11"/>
+</character>

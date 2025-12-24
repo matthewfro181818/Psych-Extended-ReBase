@@ -1,0 +1,9 @@
+<!DOCTYPE codename-engine-character>
+<character x="-150" y="180" sprite="perditusp1-5" scale="0.8" camx="100" icon="perditus-phase-1point5" color="#313E80" holdTime="6.1">
+	<anim name="idle" anim="IDLE" fps="12" loop="true"/>
+	<anim name="singUP" anim="UP" x="-2" y="-1" fps="12"/>
+	<anim name="singLEFT" anim="LEFT" x="-20" y="4" fps="12"/>
+	<anim name="singRIGHT" anim="RIGHT" fps="12"/>
+	<anim name="singDOWN" anim="DOWN" fps="12"/>
+	<anim name="fuck" anim="FUCK" fps="12"/>
+</character>

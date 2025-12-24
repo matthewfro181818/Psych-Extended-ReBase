@@ -1,0 +1,8 @@
+<!DOCTYPE codename-engine-character>
+<character x="200" y="500" sprite="phase_5_PERDITUS" scale="2.4" antialiasing="false" color="#6F0038" holdTime="16">
+	<anim name="idle" anim="idle" fps="12" loop="true"/>
+	<anim name="singUP" anim="up" x="18" y="24" fps="12"/>
+	<anim name="singLEFT" anim="left" x="73" fps="12"/>
+	<anim name="singRIGHT" anim="right" fps="12"/>
+	<anim name="singDOWN" anim="down" x="42" fps="12"/>
+</character>

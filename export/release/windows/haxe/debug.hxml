@@ -1,0 +1,103 @@
+-main ApplicationMain 
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/flixel/git
+-D flixel=5.6.1
+--macro openfl.utils._internal.ExtraParamsMacro.include()
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/openfl/9,3,3/src
+-D openfl=9.3.3
+--macro lime._internal.macros.DefineMacro.run()
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/lime/8,1,2/src
+-D lime=8.1.2
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/flixel-addons/3,2,2
+-D flixel-addons=3.2.2
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/hscript/2,4,0
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/flixel-ui/2,4,0
+-D flixel-ui=2.4.0
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/linc_luajit/git
+-D linc_luajit=0.0.8
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/tjson/1,4,0
+-D tjson=1.4.0
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/hxCodec/git
+-D hxCodec=2.6.0
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/discord_rpc/git
+-D linc_discord-rpc=1.0.0
+-D discord_rpc=1.0.0
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/hxcpp/git
+-D hxcpp=4.3.0
+--macro macro.Macro.initiateMacro()
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/SScript/git/src
+-D SScript=7.7.0
+--macro keep('IntIterator')
+--macro codenamecrew.hscript.macros.AbstractHandler.init()
+--macro codenamecrew.hscript.macros.ClassExtendMacro.init()
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/hscript-improved/git
+-D hscript=2.4.0
+-D hscript-improved=2.4.0
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/flxanimate/git
+-D flxanimate=4.0.0
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/funkin,vis/git/src
+-D funkin.vis=0.0.1
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/grig,audio/git/src
+-D grig.audio=0.0.5
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/tink_core/1,26,0/src
+-D tink_core=1.26.0
+-cp source
+-cp source_nova
+-cp library
+-cp C:/Users/mattf/Downloads/New folder (238)/FNF-Psych-Engine-with-3d-mods/.haxelib/hxCodec/git/src
+-D EXTRA_TRANSITIONS
+-D GLOBAL_SCRIPT
+-D VIDEOS_ALLOWED
+-D CRASH_HANDLER
+-D DISABLED_MACRO_SUPERLATIVE
+-D LUA_ALLOWED
+-D PSYCH_WATERMARKS
+-D SCRIPTING_ALLOWED
+-D lime-harfbuzz
+-D CUSTOM_RESOLUTION_ALLOWED
+-D hscriptPos
+-D tools=8.1.2
+-D FLX_NO_DEBUG
+-D HXCPP_CHECK_POINTER
+-D HXCPP_STACK_TRACE
+-D no-compilation
+-D NAPE_RELEASE_BUILD
+-D HXCPP_STACK_LINE
+-D HSCRIPT_ALLOWED
+-D ENABLE_NOVA
+-D lime-native
+-D lime-vorbis
+-D HXCPP_CATCH_SEGV
+-D EXTRA_FPSCOUNTER
+-D lime-cffi
+-D lime-openal
+-D CUSTOM_CLASSES
+-D EXTRA_PAUSE
+-D message.reporting=pretty
+-D officialBuild
+-D DISCORD_ALLOWED
+-D native
+-D lime-curl
+-D openfl-native
+-D CNE_CHART_ALLOWED
+-D MODS_ALLOWED
+-D HSC_ALLOWED
+-D FLX_NO_FOCUS_LOST_SCREEN
+-D FLX_CNE_FORK
+-D TITLE_SCREEN_EASTER_EGG
+-D lime-cairo
+-D no-deprecation-warnings
+-D ACHIEVEMENTS_ALLOWED
+-D lime-opengl
+-D LINC_LUA_RELATIVE_DYNAMIC_LIB
+-D EXTRA_FREEPLAY
+-D EXTRA_MAINMENU
+-D debugBuild
+-D MODPACK_ALLOWED
+-D windows
+-D desktop
+--remap flash:openfl
+--macro flixel.system.macros.FlxDefines.run()
+-cpp export/release/windows/obj
+-cp export/release/windows/haxe
+--macro keep("Main")
+-debug

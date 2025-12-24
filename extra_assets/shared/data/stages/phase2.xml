@@ -1,0 +1,13 @@
+<!DOCTYPE codename-engine-stage>
+<stage folder="stages/" name="phase2" zoom="0.6">
+	<sprite x="-384" scroll="0.6" sprite="phase2/purple_pp_eater" y="22" scale="2" name="bg"/>
+	<sprite x="-350" scroll="0.7" sprite="phase2/purple_hills" y="-295" scale="1.6" name="stageHills"/>
+	<sprite x="-326" scroll="0.8" sprite="phase2/purple_shapes" y="-110" scale="1.6" name="morecubes"/>
+	<sprite x="-339" sprite="phase2/gates_purple_shaded" y="-2" scale="2" name="gate"/>
+	<sprite x="-254" sprite="phase2/the_purple_ground" y="52" scale="1.6" name="stageFront"/>
+	<gf x="339" y="327"/>
+	<dad x="-190" y="316"/>
+	<boyfriend x="967" y="324"/>
+	<combo x="581" y="609"/>
+	<sprite x="-383.000410845389" scroll="1.2" sprite="phase2/purple_shapes_front" y="-366.062189936767" skewx="-4.16857801610604e-10" scalex="1.6" scaley="1.60000000000204" name="cubes"/>
+</stage>

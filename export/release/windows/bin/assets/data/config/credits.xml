@@ -1,0 +1,37 @@
+<!--hey, hyper here, you think you can zigzag through the code without me noticing? too bad now i will beat you up with a toilet brush-->
+
+<menu name="Veeone Credits" desc="WE WILL DIHHSHEARTEN YOUR BETRAYAL!">
+    <credit name="Adrioguy" desc="The starter of all, created this team, Inadequacy and Perditus" icon="ad" size="130" url="https://www.youtube.com/@AdrioTheDino" portrait="false"/>
+    <credit name="Jikkenthe10th" desc="Co-Director, Truly amazing individual, deserves a diamond medal, coded major scripts and was also a major artist" icon="jk" size="130" url="https://x.com/jikkenthe10th" portrait="false"/>
+    <credit name="HyperGen" desc="Co-Director and Build manager, major coding and events, major asset and game fixes, minor artist, some concepts and writer of credits, also mod in the archive server, thanks for everything jikken" icon="credit" size="130" url="https://www.youtube.com/@hyperg5___" portrait="false"/>
+    <credit name="Squidiboi" desc="New Director and owner, Also amazing, Main 3D artist, creator of Ronno" icon="image" size="130" portrait="false"/>
+    <credit name="Kris__20__11" desc="Former Co-Director, Major 3D artist but eventually never came back" icon="kris" size="130" portrait="false"/>
+    <credit name="Roblo2aj" desc="Animator of the lyrical scene, absolute cinema" icon="wowa" size="130" portrait="false"/>
+    <credit name="G-Topia" desc="Lyric writer and former voice actor" icon="gamerguy" size="130" url="https://www.youtube.com/channel/UC381X0-nfUGy36LxZv2UbXw" portrait="false"/>
+    <credit name="KyeTheGuy" desc="New Voice actor of Perditus!" icon="kye" size="130" url="https://www.youtube.com/channel/UCLTMlYoaaxtM5v2c5oDBz2w" portrait="false"/>
+    <credit name="Kenny" desc="Build manager 2 and priority playtester, coolsies" icon="finn" size="130" url="https://www.youtube.com/channel/UCnDuFTfKln30lrkcJrdqWrw" portrait="false"/>
+    <credit name="Illysonic" desc="Creator of the wiki, along with some other devs already mentioned" icon="illy" size="130" url="https://www.youtube.com/@IllySonicTheBlurObject" portrait="false"/>
+    <credit name="MythicalMew" desc="Creator of the archive server, artist for phase 3 perditus icon" icon="mew" size="130" url="https://www.youtube.com/channel/UCrirD4ZhlNcr16waUlbcuOQ" portrait="false"/>
+    <credit name="Daminex" desc="New chart replacing Cartina's after several counts of controversy" icon="dmx" size="130" portrait="false"/>
+    <credit name="Molsy" desc="2D Artist and future scrapped Voice actor, also kind individual" icon="moolsie" size="130" url="https://x.com/molsytheartly?s=21" portrait="false"/>
+    <credit name="Sam" desc="BG artist wowzies" icon="sam" size="130" portrait="false"/>
+    <credit name="AdrDudas" desc="Song title card peakness" icon="adr" size="130" portrait="false"/> 
+    <credit name="Kiyoko" desc="Former Icon artist & cool individual" icon="shuck" size="130" url="https://www.youtube.com/channel/UCTQdzAekivEnSRDynOEC34A" portrait="false"/>
+    <credit name="Polybrix" desc="Minor Co-Director, artist and playtester" icon="pb" size="130" portrait="false"/>
+    <credit name="Johntheguy" desc="Playtester and cover artist" icon="j" size="130" portrait="false"/>
+    <credit name="Berry" desc="Title screen music and Phase 3 background" icon="berry" size="130" portrait="false" url="https://x.com/starterberriez"/>
+    <credit name="Decimace" desc="Major icon artist for credits" icon="deci" size="130" url="https://x.com/markiplier?s=21" portrait="false"/>
+    <credit name="Tayden" desc="Playtester, dbdb community server announcer" icon="td" size="130" portrait="false"/>
+    <credit name="Matimateo" desc="BG artist" icon="mati" size="130" portrait="false"/>
+    <credit name="Memelord" desc="Made the modchart" icon="memelord" size="130" url="https://www.youtube.com/channel/UCoOKKyUsYyCrjjr8-nsaYCQ" portrait="false"/>
+    <credit name="Muscovici" desc="Playtester, he was just here idk"/>
+</menu>
+
+<menu name="Special thanks" desc="thank you <3">
+    <credit name="MoldyGangstaHero" desc="The father. Creator of Dave, and made Vs D&B" icon="MoldyGangstaHero" size="130" url="https://moldygh.net/" portrait="false"/>
+    <credit name="Rappareplol" desc="Creator of Bambi, also helped make Vs D&B" icon="Rapparep" size="130" url="https://x.com/rappareplol" portrait="false"/>
+    <github user="rodney528" desc="Character change script" size="130" portrait="false"/>
+    <github user="itsLJcool" desc="Stage switch script" size="130"/>
+    <credit name="And most importantly..." desc="..." url="https://youtu.be/KNLkKVuSwP8?si=0L75BiiTHt3mruDS"/>
+    <credit name="You!" desc="For sticking with us through rough times." icon="you" size="140" portrait="false" color="#ffea00" url="https://m.youtube.com/watch?v=yTu4ga39I94&pp=ygUNd2hhdCB0aGUgd2VnYQ%3D%3D"/>
+</menu>
