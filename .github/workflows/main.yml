@@ -16,30 +16,6 @@ jobs:
             artifactPath: export\release\windows\bin\*
             system: Windows
 
-          - name: Android-Arm64
-            os: ubuntu-24.04
-            buildArgs: "android -D officialBuild -ONLY_ARM64 -final"
-            setupCommand: sh ./setup/unix.sh
-            artifactName: androidBuild-Arm64
-            artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
-            system: Android
-
-          - name: Android-Armv7
-            os: ubuntu-24.04
-            buildArgs: "android -D officialBuild -ONLY_ARMV7 -final"
-            setupCommand: sh ./setup/unix.sh
-            artifactName: androidBuild-Armv7
-            artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
-            system: Android
-
-          - name: Android
-            os: ubuntu-24.04
-            buildArgs: "android -D officialBuild -final" 
-            setupCommand: sh ./setup/unix.sh
-            artifactName: androidBuild
-            artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
-            system: Android
-
           - name: Windows-Debug
             os: windows-2022
             buildArgs: "windows -D officialBuild -D debugBuild -D ENABLE_NOVA -final"
@@ -48,13 +24,6 @@ jobs:
             artifactPath: export\release\windows\bin\*
             system: Windows
 
-          - name: Android-Debug
-            os: ubuntu-24.04
-            buildArgs: "android -D officialBuild -D debugBuild -D ENABLE_NOVA -final" 
-            setupCommand: sh ./setup/unix.sh
-            artifactName: androidDebugBuild
-            artifactPath: "export/release/android/bin/app/build/outputs/apk/release/*.apk"
-            system: Android
     uses: ./.github/workflows/build.yml
     with:
         name: ${{ matrix.name }}
